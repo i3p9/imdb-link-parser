@@ -1,22 +1,23 @@
+import sys
 from bs4 import BeautifulSoup
 import requests
 import re
 from dateutil.parser import parse
 
 """
-what does it do?
+what it does?
 - parses all movies and their data in a list-page
 - paginates to last page automatically while keeping track of their cookie and keys
 - sanitizes/cleans up the movie name, year and rating to usable string
 - writes them in a letterboxd-supported .csv file (uses Rating10)
 """
 
-#input list's link here
-next_page = f"https://www.imdb.com/user/ur54854806/ratings"
+#next_page = f"https://www.imdb.com/user/ur54854806/ratings"
+next_page = f"{sys.argv[1]}"
 total = 0
 page = 1
 i = 1
-with open('output.csv', 'w') as f:
+with open('fixed.csv', 'w') as f:
     f.write(f"Title,Year,Rating10\n")
     while i > 0:
         r = requests.get(next_page)
@@ -42,7 +43,7 @@ with open('output.csv', 'w') as f:
         except:
             no_next_page = soup.find('a',attrs={'class':'flat-button next-page disabled'})
             if no_next_page['href'] == "#":
-                print(f"Reached the last page, we break now.")
+                print(f"Reached last page, exiting...")
                 break
 
 print(f"Success, parsed and wrote {total} movies from {page} pages in total")
