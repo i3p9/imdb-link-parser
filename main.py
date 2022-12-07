@@ -4,7 +4,7 @@ import re
 from dateutil.parser import parse
 
 """
-what it does?
+what does it do?
 - parses all movies and their data in a list-page
 - paginates to last page automatically while keeping track of their cookie and keys
 - sanitizes/cleans up the movie name, year and rating to usable string
@@ -16,7 +16,7 @@ next_page = f"https://www.imdb.com/user/ur54854806/ratings"
 total = 0
 page = 1
 i = 1
-with open('fixed.csv', 'w') as f:
+with open('output.csv', 'w') as f:
     f.write(f"Title,Year,Rating10\n")
     while i > 0:
         r = requests.get(next_page)
