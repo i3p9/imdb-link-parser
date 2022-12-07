@@ -1,6 +1,13 @@
 # imdb-link-parser
 Parses IMDB User Lists in csv format for letterboxd
 
+## Usage
+```
+python3 imdbScraper.py "link-to-list"
+eg.
+python3 imdbScraper.py "https://www.imdb.com/user/ur54854806/ratings"
+```
+
 what?
 - parses all movies and their data in a list-page
 - paginates to last page automatically while keeping track of their relative keys
